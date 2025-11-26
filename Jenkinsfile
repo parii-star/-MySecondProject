@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'git', url: 'https://github.com/parii-star/-MySecondProject.git'
+                git branch: 'main', credentialsId: 'Second_pro_token', url: 'https://github.com/parii-star/-MySecondProject.git'
             }
         }
         stage('Build Docker Images') {
@@ -17,6 +17,14 @@ pipeline {
         stage('Deploy Locally') {
             steps {
                 sh '''#!/bin/bash
+                # Create backend .env if not present
+                if [ ! -f backend/.env ]; then
+                    cp backend/.env.example backend/.env
+                fi
+                # Create frontend .env if not present
+                if [ ! -f frontend/.env ]; then
+                    cp frontend/.env.example frontend/.env
+                fi
                 docker-compose up -d
                 '''
             }
