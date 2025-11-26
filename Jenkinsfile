@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                 docker build -t mysecondproject_backend:latest ./backend
-                docker build -t mysecondproject_frontend:latest ./frontend
+                docker build --build-arg VITE_API_BASE_URL=http://localhost:5000/api -t mysecondproject_frontend:latest ./frontend
                 '''
             }
         }
