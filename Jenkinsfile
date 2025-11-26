@@ -6,6 +6,15 @@ pipeline {
                 git branch: 'main', credentialsId: 'Second_pro_token', url: 'https://github.com/parii-star/-MySecondProject.git'
             }
         }
+        stage('Cleanup') {
+            steps {
+                sh '''#!/bin/bash
+                # Stop and remove old containers and volumes
+                docker-compose down -v || true
+                docker system prune -f || true
+                '''
+            }
+        }
         stage('Build Docker Images') {
             steps {
                 sh '''#!/bin/bash
