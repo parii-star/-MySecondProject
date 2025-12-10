@@ -1,0 +1,16 @@
+# This file specifies files that are *not* uploaded to Google Cloud
+# using gcloud.
+
+.gcloudignore
+.git
+.gitignore
+node_modules
+npm-debug.log
+.env
+.DS_Store
+*.md
+.vscode
+.github
+MySecondProject/
+Jenkinsfile
+docker-compose.yml

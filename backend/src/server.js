@@ -71,7 +71,7 @@ app.use((error, _req, res, _next) => {
 async function bootstrap() {
   try {
     await initDb();
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`Backend listening on port ${PORT}`);
     });
   } catch (error) {
